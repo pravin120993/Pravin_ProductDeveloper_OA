@@ -1,0 +1,19 @@
+version: "3"
+services:
+
+  react-app:
+    build: ./react-application/
+    depends_on:
+      - node-app
+    ports:
+      - "8080:80"
+
+  node-app:
+    build: ./nodejs-api/
+    depends_on:
+      - postgres
+    ports:
+      - "9090:9090"
+
+  postgres:
+    build: ./database/
